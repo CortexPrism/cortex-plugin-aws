@@ -1,0 +1,84 @@
+{
+  "name": "cortex-plugin-aws",
+  "version": "1.0.0",
+  "description": "Full AWS: EC2, S3, Lambda, RDS, CloudWatch",
+  "kind": "esm",
+  "entryPoint": "mod.ts",
+  "runtime": "deno",
+  "author": "CortexPrism",
+  "license": "MIT",
+  "repository": "https://github.com/CortexPrism/cortex-plugin-aws",
+  "capabilities": [
+    "tools",
+    "network:fetch",
+    "shell:run"
+  ],
+  "tools": [
+    {
+      "name": "aws_list_resources",
+      "description": "List resources by service",
+      "params": [
+        { "name": "service", "type": "string", "description": "AWS service: ec2, s3, lambda, rds, cloudwatch, iam", "required": true },
+        { "name": "region", "type": "string", "description": "AWS region", "required": false },
+        { "name": "filters", "type": "string", "description": "JSON filter criteria", "required": false }
+      ]
+    },
+    {
+      "name": "aws_describe",
+      "description": "Describe a specific resource",
+      "params": [
+        { "name": "service", "type": "string", "description": "AWS service name", "required": true },
+        { "name": "resource_id", "type": "string", "description": "Resource identifier", "required": true },
+        { "name": "region", "type": "string", "description": "AWS region", "required": false }
+      ]
+    },
+    {
+      "name": "aws_get_logs",
+      "description": "Get CloudWatch logs",
+      "params": [
+        { "name": "log_group", "type": "string", "description": "CloudWatch log group name", "required": true },
+        { "name": "hours", "type": "number", "description": "Hours of logs to retrieve", "required": false },
+        { "name": "filter_pattern", "type": "string", "description": "Filter pattern for log events", "required": false }
+      ]
+    },
+    {
+      "name": "aws_list_buckets",
+      "description": "List S3 buckets",
+      "params": []
+    },
+    {
+      "name": "aws_invoke_lambda",
+      "description": "Invoke Lambda function",
+      "params": [
+        { "name": "function_name", "type": "string", "description": "Lambda function name", "required": true },
+        { "name": "payload", "type": "string", "description": "JSON payload to send", "required": false },
+        { "name": "region", "type": "string", "description": "AWS region", "required": false }
+      ]
+    },
+    {
+      "name": "aws_cost_estimate",
+      "description": "Estimate monthly cost",
+      "params": [
+        { "name": "service", "type": "string", "description": "AWS service to estimate", "required": false },
+        { "name": "region", "type": "string", "description": "AWS region", "required": false }
+      ]
+    }
+  ],
+  "ui": {
+    "section": "AWS",
+    "fields": [
+      { "key": "awsAccessKey", "label": "AWS Access Key", "type": "text", "description": "AWS access key ID" },
+      { "key": "awsSecretKey", "label": "AWS Secret Key", "type": "secret", "description": "AWS secret access key" },
+      { "key": "awsRegion", "label": "AWS Region", "type": "text", "description": "Default AWS region", "defaultValue": "us-east-1" },
+      { "key": "awsProfile", "label": "AWS Profile", "type": "text", "description": "AWS CLI profile name", "defaultValue": "default" }
+    ]
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "cortex": ">=1.0.0"
+  },
+  "aiDisclosure": {
+    "tools": ["Claude Code (Anthropic)"],
+    "humanReview": true
+  }
+}
