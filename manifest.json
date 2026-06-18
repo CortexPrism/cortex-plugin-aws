@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-aws",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Full AWS: EC2, S3, Lambda, RDS, CloudWatch",
   "kind": "esm",
   "entryPoint": "mod.ts",
@@ -24,7 +24,12 @@
           "description": "AWS service: ec2, s3, lambda, rds, cloudwatch, iam",
           "required": true
         },
-        { "name": "region", "type": "string", "description": "AWS region", "required": false },
+        {
+          "name": "region",
+          "type": "string",
+          "description": "AWS region",
+          "required": false
+        },
         {
           "name": "filters",
           "type": "string",
@@ -49,7 +54,12 @@
           "description": "Resource identifier",
           "required": true
         },
-        { "name": "region", "type": "string", "description": "AWS region", "required": false }
+        {
+          "name": "region",
+          "type": "string",
+          "description": "AWS region",
+          "required": false
+        }
       ]
     },
     {
@@ -97,7 +107,12 @@
           "description": "JSON payload to send",
           "required": false
         },
-        { "name": "region", "type": "string", "description": "AWS region", "required": false }
+        {
+          "name": "region",
+          "type": "string",
+          "description": "AWS region",
+          "required": false
+        }
       ]
     },
     {
@@ -110,38 +125,47 @@
           "description": "AWS service to estimate",
           "required": false
         },
-        { "name": "region", "type": "string", "description": "AWS region", "required": false }
+        {
+          "name": "region",
+          "type": "string",
+          "description": "AWS region",
+          "required": false
+        }
       ]
     }
   ],
   "ui": {
-    "section": "AWS",
-    "fields": [
+    "settings": [
       {
-        "key": "awsAccessKey",
-        "label": "AWS Access Key",
-        "type": "text",
-        "description": "AWS access key ID"
-      },
-      {
-        "key": "awsSecretKey",
-        "label": "AWS Secret Key",
-        "type": "secret",
-        "description": "AWS secret access key"
-      },
-      {
-        "key": "awsRegion",
-        "label": "AWS Region",
-        "type": "text",
-        "description": "Default AWS region",
-        "defaultValue": "us-east-1"
-      },
-      {
-        "key": "awsProfile",
-        "label": "AWS Profile",
-        "type": "text",
-        "description": "AWS CLI profile name",
-        "defaultValue": "default"
+        "section": "AWS",
+        "fields": [
+          {
+            "key": "awsAccessKey",
+            "label": "AWS Access Key",
+            "type": "text",
+            "description": "AWS access key ID"
+          },
+          {
+            "key": "awsSecretKey",
+            "label": "AWS Secret Key",
+            "type": "secret",
+            "description": "AWS secret access key"
+          },
+          {
+            "key": "awsRegion",
+            "label": "AWS Region",
+            "type": "text",
+            "description": "Default AWS region",
+            "default": "us-east-1"
+          },
+          {
+            "key": "awsProfile",
+            "label": "AWS Profile",
+            "type": "text",
+            "description": "AWS CLI profile name",
+            "default": "default"
+          }
+        ]
       }
     ]
   },
@@ -150,7 +174,10 @@
     "cortex": ">=1.0.0"
   },
   "aiDisclosure": {
-    "tools": ["Claude Code (Anthropic)"],
+    "tools": [
+      "Claude Code (Anthropic)"
+    ],
     "humanReview": true
-  }
+  },
+  "homepage": "https://github.com/CortexPrism/cortex-plugin-aws"
 }

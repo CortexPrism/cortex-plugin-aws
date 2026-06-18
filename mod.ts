@@ -3,6 +3,7 @@ import type { PluginContext, Tool, ToolCallResult, ToolContext } from './types.t
 let config: Record<string, string> = {};
 
 export async function onLoad(ctx: PluginContext): Promise<void> {
+  ctx.logger.info(`[cortex-plugin-aws] Loaded`);
   config = {
     awsAccessKey: (await ctx.config.get('awsAccessKey')) ?? '',
     awsSecretKey: (await ctx.config.get('awsSecretKey')) ?? '',
