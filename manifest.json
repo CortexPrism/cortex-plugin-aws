@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-aws",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Full AWS: EC2, S3, Lambda, RDS, CloudWatch",
   "kind": "esm",
   "entryPoint": "mod.ts",
@@ -156,14 +156,14 @@
             "label": "AWS Region",
             "type": "text",
             "description": "Default AWS region",
-            "default": "us-east-1"
+            "defaultValue": "us-east-1"
           },
           {
             "key": "awsProfile",
             "label": "AWS Profile",
             "type": "text",
             "description": "AWS CLI profile name",
-            "default": "default"
+            "defaultValue": "default"
           }
         ]
       }
@@ -171,7 +171,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "cortex": ">=1.0.0"
+    "cortex": ">=0.51.0"
   },
   "aiDisclosure": {
     "tools": [

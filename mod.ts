@@ -1,5 +1,5 @@
 // deno-lint-ignore-file
-import type { PluginContext, Tool, ToolCallResult, ToolContext } from './types.ts';
+import type { PluginContext, Tool, ToolCallResult } from 'cortex/plugins';
 
 let config: Record<string, string> = {};
 
@@ -31,7 +31,7 @@ const aws_list_resources: Tool = {
     ],
     capabilities: ['shell:run', 'network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const service = args.service as string;
@@ -125,7 +125,7 @@ const aws_describe: Tool = {
     ],
     capabilities: ['shell:run', 'network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const service = args.service as string;
@@ -206,7 +206,7 @@ const aws_get_logs: Tool = {
     ],
     capabilities: ['shell:run', 'network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const logGroup = args.log_group as string;
@@ -264,7 +264,7 @@ const aws_list_buckets: Tool = {
     params: [],
     capabilities: ['shell:run'],
   },
-  execute: async (_args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (_args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const p = new Deno.Command('aws', { args: ['s3api', 'list-buckets'] });
@@ -314,7 +314,7 @@ const aws_invoke_lambda: Tool = {
     ],
     capabilities: ['shell:run'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const functionName = args.function_name as string;
@@ -392,7 +392,7 @@ const aws_cost_estimate: Tool = {
     ],
     capabilities: ['shell:run'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const p = new Deno.Command('aws', {
